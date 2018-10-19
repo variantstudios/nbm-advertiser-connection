@@ -1,0 +1,338 @@
+/*
+    CSS RESET 
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+#wrap {
+    /* max-width: 766px; */
+    max-width: 980px;
+    margin: 2rem auto;
+}
+
+.selectedDate {
+    margin: 0 1rem 0 0;
+}
+
+#DrpDwn {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+}
+
+header {
+    text-align: center;
+    min-height: 219px;
+}
+
+header img {
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    #details ul {
+        -webkit-column-count: 3;
+        column-count: 3;
+        -webkit-column-gap: 10%;
+        column-gap: 10%;
+        -webkit-column-rule: solid 1px #eee;
+        column-rule: solid 1px #eee;
+        padding: 0;
+    }
+}
+
+#details ul li {
+    display: block;
+    padding: .2rem 0;
+}
+
+#details ul li a {
+    color: #333333;
+    line-height: 1.6;
+}
+
+#details ul li a:hover {
+    text-decoration: none;
+}
+
+h2 {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+
+#loader {
+    height: 4px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+#loader:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #2980b9;
+    -webkit-animation: loading 2s linear infinite;
+    animation: loading 2s linear infinite;
+}
+
+#content {
+    position: relative;
+    -webkit-animation: fadein 800ms cubic-bezier(0.47, 0.39, 0.26, 1.07);
+    animation: fadein 800ms cubic-bezier(0.47, 0.39, 0.26, 1.07);
+}
+
+.select-style {
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    width: 300px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff;
+    position: relative;
+}
+
+.select-style:after {
+    top: 50%;
+    right: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.select-style select {
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: .8rem;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+@-webkit-keyframes loading {
+    from {
+        left: -200px;
+        width: 30%;
+    }
+    50% {
+        width: 30%;
+    }
+    70% {
+        width: 70%;
+    }
+    80% {
+        left: 50%;
+    }
+    95% {
+        left: 120%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes loading {
+    from {
+        left: -200px;
+        width: 30%;
+    }
+    50% {
+        width: 30%;
+    }
+    70% {
+        width: 70%;
+    }
+    80% {
+        left: 50%;
+    }
+    95% {
+        left: 120%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+        top: -20px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        top: -20px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
