@@ -3,6 +3,7 @@ import Axios from 'axios';
 import _ from 'lodash';
 import './App.css';
 import HeaderImage from './header.jpg';
+
 class App extends Component {
 	constructor() {
 		super();
@@ -13,7 +14,7 @@ class App extends Component {
 	}
 
 	componentDidMount = () => {
-		Axios.get('./advertiser_connect_v3.json')
+		Axios.get('./js/advertiser_connect_v3.json')
 			.then((response) => {
 				this.setState({ listEditions: response.data });
 				this.setState({
