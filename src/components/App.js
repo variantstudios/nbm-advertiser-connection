@@ -1,29 +1,49 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import _ from 'lodash';
-import './App.css';
-import HeaderImage from './header.jpg';
+import queryString from 'query-string';
+import '../App.css';
+import HeaderImage from '../header.jpg';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			listEditions: [],
-			selectedEditiona: ''
+			selectedEdition: '',
+			urlIssue: ''
 		};
 	}
 
 	componentDidMount = () => {
+		let issue;
+		if (this.props.location.search) {
+			const val = queryString.parse(this.props.location.search);
+			console.log(val);
+			issue = val.issue = val.issue.replace('and', '&');
+			this.setState({ urlIssue: issue });
+			console.log(issue);
+		}
+
+		//console.log(this.state.urlIssue);
+
 		Axios.get('./js/advertiser_connect_v3.json')
 			.then((response) => {
 				this.setState({ listEditions: response.data });
-				this.setState({
-					selectedEdition: _.last(
-						_.sortBy(response.data, 'issue_date')
-							.map((item) => item.issue_text)
-							.filter((value, index, self) => self.indexOf(value) === index)
-					)
-				});
+				//console.log(this.state.listEditions);
+				if (!this.state.urlIssue) {
+					this.setState({
+						selectedEdition: _.last(
+							_.sortBy(response.data, 'issue_date')
+								.map((item) => item.issue_text)
+								.filter((value, index, self) => self.indexOf(value) === index)
+						)
+					});
+				} else {
+					this.setState({
+						selectedEdition: this.state.urlIssue
+					});
+				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -31,12 +51,16 @@ class App extends Component {
 	};
 
 	selectEdition() {
-		//console.log(this.refs.valueSelector.value);
 		this.setState({ selectedEdition: this.refs.valueSelector.value });
+
+		let pushIssue = this.refs.valueSelector.value;
+		pushIssue = pushIssue = pushIssue.replace('&', 'and');
+		console.log(pushIssue);
+		this.props.history.push('/?issue=' + pushIssue);
 	}
 
 	render() {
-		console.log(this.state.listEditions);
+		//console.log(this.state.listEditions);
 
 		const uniqueList = _.sortBy(this.state.listEditions, 'issue_date')
 			.map((item) => item.issue_text)
